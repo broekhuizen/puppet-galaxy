@@ -37,5 +37,17 @@
 #
 class galaxy {
 
+package { "python":
+	ensure => installed,
+}
+
+vcsrepo { '/opt/galaxy':
+    ensure => latest,
+    provider => 'hg',
+    source => 'https://bitbucket.org/galaxy/galaxy-dist'
+}
+
+
+
 
 }
