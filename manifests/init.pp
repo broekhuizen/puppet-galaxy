@@ -37,6 +37,7 @@
 #
 class galaxy (
 	$galaxy_bitbucket_link = 'https://bitbucket.org/galaxy/galaxy-dist',
+	$galaxy_install_dir = '/opt/galaxy-dist'
 ) {
 
 package { "python":
@@ -47,11 +48,17 @@ package { "mercurial":
 	ensure => installed,
 }
 
-vcsrepo { '/opt/galaxy':
-    ensure => present,
+file {"/opt/galaxy-dist/universe_wsgi.ini":
+  ensure  => present,
+  content => template("galaxy/universe_wsgi.ini.erb"),
+  mode    => '644'
+}
+
+vcsrepo { $galaxy_install_dir:
+    ensure   => present,
     provider => hg,
-    source => $galaxy_bitbucket_link,
-    require => Package['mercurial']
+    source   => $galaxy_bitbucket_link,
+    require  => Package['mercurial']
 }
 
 }
