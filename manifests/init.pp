@@ -36,18 +36,21 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class galaxy {
+	$galaxy_bitbucket_link = "https://bitbucket.org/galaxy/galaxy-dist",
 
 package { "python":
 	ensure => installed,
 }
 
-vcsrepo { '/opt/galaxy':
-    ensure => latest,
-    provider => 'hg',
-    source => 'https://bitbucket.org/galaxy/galaxy-dist'
+package { "mercurial":
+	ensure => installed,
 }
 
-
-
+vcsrepo { '/opt/galaxy':
+    ensure => present,
+    provider => hg,
+    source => $galaxy_bitbucket_link,
+    require => Package['mercurial']
+}
 
 }
