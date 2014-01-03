@@ -35,8 +35,9 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class galaxy {
-	$galaxy_bitbucket_link = "https://bitbucket.org/galaxy/galaxy-dist",
+class galaxy (
+	$galaxy_bitbucket_link = 'https://bitbucket.org/galaxy/galaxy-dist',
+) {
 
 package { "python":
 	ensure => installed,
