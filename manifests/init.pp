@@ -64,6 +64,7 @@ vcsrepo { $galaxy_install_dir:
 user { 'galaxy':
   ensure           => 'present',
   comment          => 'galaxy',
+  home             => '/home/galaxy',
 }
 
 }
