@@ -61,4 +61,9 @@ vcsrepo { $galaxy_install_dir:
     require  => Package['mercurial']
 }
 
+user { 'galaxy':
+  ensure           => 'present',
+  comment          => 'galaxy',
+}
+
 }
