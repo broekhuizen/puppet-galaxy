@@ -38,6 +38,7 @@
 class galaxy (
 	$galaxy_bitbucket_link = 'https://bitbucket.org/galaxy/galaxy-dist',
 	$galaxy_install_dir = '/opt/galaxy-dist'
+	$password = undef,
 ) {
 
 package { "python":
@@ -62,9 +63,10 @@ vcsrepo { $galaxy_install_dir:
 }
 
 user { 'galaxy':
-  ensure           => 'present',
-  comment          => 'galaxy',
-  home             => '/home/galaxy',
+  ensure   => 'present',
+  comment  => 'galaxy',
+  home     => '/home/galaxy',
+  password => $password,   
 }
 
 }
