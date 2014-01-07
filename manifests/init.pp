@@ -38,7 +38,7 @@
 class galaxy (
 	$galaxy_bitbucket_link = 'https://bitbucket.org/galaxy/galaxy-dist',
 	$galaxy_install_dir    = '/opt/galaxy-dist',
-  $galaxy_user           = 'galaxy',
+	$galaxy_user           = 'galaxy',
 	$password              = undef,
 ) {
 
